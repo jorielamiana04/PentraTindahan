@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pentra Tindahan: know what your store really earns, every day</title>
+<meta name="description" content="Pentra Tindahan keeps your sales, stock, utang, GCash and helpers in one app on your phone, and shows your real profit every day. Works even without internet.">
+<meta name="theme-color" content="#5B21B6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pentra Tindahan: know what your store really earns, every day">
+<meta property="og:description" content="Sales, stock, utang, GCash and helpers in one app. Count your shelf and Pentra works out your sales and profit. Free 14-day trial.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235B21B6'/%3E%3Cpath d='M14 26h36l-4-10H18z' fill='%23FFC83D'/%3E%3Crect x='18' y='30' width='28' height='18' rx='3' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Caveat:wght@500;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B1530; --ink2:#4E4866; --purple:#5B21B6; --purple-d:#461790; --lilac:#F1ECFD; --lilac2:#E4DAFA;
+  --yellow:#FFC83D; --yellow-l:#FFF6DA; --green:#177A52; --green-l:#E6F4EE; --red:#B3261E; --red-l:#FDECEA;
+  --line:#E5E0F2; --paper:#FBFCFF; --rule:#C8D7F1; --margin:#E08A8A; --can:#D2463E; --plank:#B9824B;
+  --f-display:'Archivo','Arial Narrow',system-ui,sans-serif; --f-body:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif; --f-hand:'Caveat','Segoe Print','Comic Sans MS',cursive;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--f-body);font-size:1.0625rem;line-height:1.62;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--f-display);font-stretch:116%;font-weight:820;line-height:1.04;letter-spacing:-.018em;margin:0 0 .45em;text-wrap:balance}
+h1{font-size:clamp(2.35rem,6.4vw,4.5rem)}
+h2{font-size:clamp(1.85rem,4.3vw,3.05rem);max-width:22ch}
+h3{font-size:1.28rem;font-stretch:108%;font-weight:760;letter-spacing:-.005em}
+p{margin:0 0 1em;max-width:62ch}
+a{color:var(--purple);text-underline-offset:3px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.sec{padding:clamp(64px,9vw,116px) 0}
+.lede{font-size:clamp(1.08rem,1.6vw,1.22rem);color:var(--ink2);max-width:58ch}
+.muted{color:var(--ink2)}
+.small{font-size:.92rem}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px;top:10px;z-index:50;background:#fff;color:var(--purple);padding:10px 14px;border-radius:10px;font-weight:700}
+.skip:focus{left:12px}
+:focus-visible{outline:3px solid var(--purple);outline-offset:3px;border-radius:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font:700 1rem/1.2 var(--f-body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+.btn-p{background:var(--purple);color:#fff}.btn-p:hover{background:var(--purple-d)}
+.btn-s{background:#fff;color:var(--purple);border-color:var(--purple)}.btn-s:hover{background:var(--lilac)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 12px}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:1.12rem;margin-right:auto}
+.brand svg{width:34px;height:34px;flex:none}
+.brand span{white-space:nowrap}
+@media (max-width:400px){.brand{font-size:1rem;gap:8px}.brand svg{width:30px;height:30px}.lang button{padding:7px 10px}}
+.lang{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:#fff}
+.lang button{border:0;background:transparent;font:600 .9rem var(--f-body);color:var(--ink2);padding:7px 12px;border-radius:999px;cursor:pointer;min-height:36px}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.bar .btn{min-height:42px;padding:0 16px;font-size:.93rem}
+@media (max-width:520px){.bar .btn{display:none}}
+
+/* hero */
+.hero{padding:clamp(34px,6vw,76px) 0 clamp(56px,8vw,100px);background:linear-gradient(#fff,#fff 60%,var(--yellow-l))}
+.hero .wrap{display:grid;gap:40px;align-items:center}
+@media (min-width:980px){.hero .wrap{grid-template-columns:1.02fr 1fr;gap:56px}}
+.hero h1{max-width:13ch}
+.note{font-size:.93rem;color:var(--ink2)}
+.shelf-card{background:#fff;border:2px solid #F0D48A;border-radius:26px;padding:22px 22px 18px;box-shadow:0 18px 40px -26px rgba(91,33,182,.45)}
+.shelf-card h2{font-size:1.45rem;font-stretch:108%;margin-bottom:.3em}
+.shelf-card .q{color:var(--ink2);font-size:.98rem;margin-bottom:14px}
+.shelf{background:#F7E7C8;border-radius:14px;padding:10px 10px 4px;border:1px solid #E9CF9E}
+.shelf svg{width:100%;height:auto}
+.can{transition:opacity .25s ease}
+.can.gone .body{fill:none;stroke:#C9A36A;stroke-dasharray:3 3}
+.can.gone .band,.can.gone .lid{opacity:0}
+.slider{margin:16px 0 6px}
+.slider label{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;gap:12px}
+.slider output{font-family:var(--f-display);font-stretch:112%;font-size:1.35rem;font-weight:800;color:var(--purple)}
+input[type=range]{width:100%;height:44px;accent-color:var(--purple);cursor:pointer;margin:2px 0 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 10px;padding:0}
+.stats div{background:var(--lilac);border-radius:14px;padding:10px 14px}
+.stats dt{font-size:.85rem;color:var(--ink2);font-weight:600}
+.stats dd{margin:0;font-family:var(--f-display);font-stretch:110%;font-weight:800;font-size:clamp(1.2rem,3.4vw,1.5rem);letter-spacing:-.01em}
+.stats .profit{background:var(--green-l)}.stats .profit dd{color:var(--green)}
+.left-val{font-size:.95rem;margin:0 0 6px}
+.shelf-foot{font-size:.9rem;color:var(--ink2);margin:0}
+
+/* utang */
+.utang{background:var(--lilac)}
+.utang .grid{display:grid;gap:28px;margin-top:34px;align-items:start}
+@media (min-width:900px){.utang .grid{grid-template-columns:1fr 1fr;gap:40px}}
+.notebook{position:relative;background:var(--paper);border-radius:6px 18px 18px 6px;padding:22px 22px 24px 64px;box-shadow:0 1px 0 #d8d2ea,0 14px 30px -22px rgba(27,21,48,.5);
+  background-image:linear-gradient(90deg,transparent 46px,var(--margin) 46px,var(--margin) 48px,transparent 48px),repeating-linear-gradient(transparent 0 33px,var(--rule) 33px 34px);transform:rotate(-1.2deg)}
+.notebook h3{font-family:var(--f-hand);font-stretch:normal;font-weight:700;font-size:1.9rem;letter-spacing:0;color:#23357a;margin:0 0 4px;line-height:34px}
+.notebook ul{list-style:none;margin:0;padding:0;font-family:var(--f-hand);font-size:1.55rem;line-height:34px;color:#1f2f73}
+.notebook li.x{text-decoration:line-through;text-decoration-color:#b33;color:#5a67a0}
+.notebook .sum{color:#a13434}
+.cap{font-size:.95rem;color:var(--ink2);margin:12px 0 0}
+.acct{background:#fff;border-radius:22px;padding:22px;border:1px solid var(--lilac2);box-shadow:0 18px 40px -30px rgba(27,21,48,.55)}
+.acct-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.acct h3{margin:0}
+.bal{font-family:var(--f-display);font-stretch:112%;font-weight:820;font-size:2.1rem;line-height:1;margin:14px 0 6px}
+.meter{height:12px;background:#EEE9F8;border-radius:99px;overflow:hidden}
+.meter span{display:block;height:100%;background:var(--purple);border-radius:99px;transition:width .3s ease}
+.meter.over span{background:var(--red)}
+.limit-row{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink2);margin:6px 0 14px}
+.hist{width:100%;border-collapse:collapse;font-size:.95rem;margin-bottom:16px}
+.hist td{padding:8px 0;border-top:1px solid var(--line)}
+.hist td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.acct .btns{margin:6px 0 10px}
+.acct .btn{min-height:46px;padding:0 18px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;margin:6px 0 10px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--purple);margin-top:2px;flex:none}
+.msg{border-radius:12px;padding:10px 14px;font-size:.95rem;min-height:1em}
+.msg.ok{background:var(--green-l);color:#0f5a3c}.msg.bad{background:var(--red-l);color:#8a1c16}.msg:empty{display:none}
+
+/* overview */
+.ov .grid{display:grid;gap:40px;align-items:center;margin-top:10px}
+@media (min-width:920px){.ov .grid{grid-template-columns:360px 1fr;gap:64px}}
+.phone{width:min(340px,100%);margin-inline:auto;background:var(--ink);border-radius:44px;padding:12px;box-shadow:0 30px 60px -34px rgba(27,21,48,.8)}
+.screen{background:#FAF9FD;border-radius:34px;padding:18px 16px 20px;min-height:560px}
+.scr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.scr-top b{font-family:var(--f-display);font-stretch:108%;font-size:1.05rem}
+.pill{font-size:.72rem;background:var(--yellow);color:var(--ink);padding:3px 9px;border-radius:99px;font-weight:700}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 11px}
+.tile span{display:block;font-size:.74rem;color:var(--ink2);font-weight:600}
+.tile b{font-family:var(--f-display);font-stretch:108%;font-size:1.08rem}
+.tile.pos b{color:var(--green)}
+.scr-h{font-size:.8rem;font-weight:700;color:var(--ink2);margin:14px 0 7px}
+.alerts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.alerts div{border-radius:12px;padding:8px 10px;font-size:.8rem;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.a-out{background:var(--red-l);color:#8a1c16}.a-low{background:#FFF1CC;color:#6b4a00}.a-exp{background:#FFE8D6;color:#7a3a0c}.a-dead{background:#EDEAF3;color:#3d3752}
+.alerts b{font-size:1rem}
+.val{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:.84rem}
+.val div{display:flex;justify-content:space-between;padding:3px 0}
+.val div:last-child{color:var(--green);font-weight:700}
+.defs{margin:18px 0 0;padding:0;display:grid;gap:18px}
+.defs dt{display:flex;align-items:center;gap:12px;font-weight:700}
+.dot{width:14px;height:14px;border-radius:50%;flex:none}
+.defs dd{margin:3px 0 0 26px;color:var(--ink2)}
+
+/* features */
+.feat{background:#fff}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;margin:22px 0 8px;scrollbar-width:thin}
+.tabs button{flex:none;border:1.5px solid var(--line);background:#fff;color:var(--ink);font:600 .95rem var(--f-body);padding:10px 16px;border-radius:999px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px}
+.tabs button svg{width:18px;height:18px}
+.tabs button[aria-selected="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.panel{border-top:3px solid var(--purple);padding-top:26px;display:grid;gap:12px 48px}
+@media (min-width:860px){.panel{grid-template-columns:.9fr 1.1fr}}
+.panel h3{font-size:clamp(1.5rem,3vw,2rem);font-stretch:112%;font-weight:800;margin:0}
+.panel ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.panel li{position:relative;padding-left:30px}
+.panel li::before{content:"";position:absolute;left:0;top:.45em;width:16px;height:9px;border-left:3px solid var(--green);border-bottom:3px solid var(--green);transform:rotate(-45deg)}
+
+/* day */
+.day{background:var(--yellow-l)}
+.steps{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
+@media (min-width:880px){.steps{grid-template-columns:repeat(3,1fr);gap:0 36px}}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-top:2px solid #EED9A4}
+.steps li::before{content:counter(s);font-family:var(--f-display);font-stretch:120%;font-weight:850;font-size:2.2rem;line-height:1;color:var(--purple)}
+.steps b{display:block;font-size:1.05rem;margin-bottom:2px}
+.steps span{color:var(--ink2)}
+
+/* calculator */
+.calc .grid{display:grid;gap:34px;margin-top:26px}
+@media (min-width:940px){.calc .grid{grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}}
+.field{margin-bottom:18px}
+.field label{display:flex;justify-content:space-between;gap:16px;font-weight:600;align-items:baseline}
+.field output{font-weight:800;color:var(--purple);white-space:nowrap;font-variant-numeric:tabular-nums}
+.result{background:var(--ink);color:#fff;border-radius:26px;padding:26px 26px 22px}
+.result .big{font-family:var(--f-display);font-stretch:118%;font-weight:850;font-size:clamp(2.6rem,7vw,3.8rem);line-height:1;letter-spacing:-.02em;color:var(--yellow)}
+.result p{color:#E7E3F4;max-width:none}
+.result .row{display:flex;justify-content:space-between;gap:16px;border-top:1px solid rgba(255,255,255,.18);padding:10px 0;font-variant-numeric:tabular-nums}
+.result .share{background:rgba(255,255,255,.08);border-radius:14px;padding:12px 14px;margin:12px 0 10px;color:#fff}
+.result .fine{font-size:.85rem;color:#C9C3DC;margin:0}
+
+/* compare */
+.tblw{overflow-x:auto;margin-top:26px;border:1px solid var(--line);border-radius:18px}
+table.cmp{border-collapse:collapse;width:100%;min-width:560px;font-size:1rem}
+.cmp th,.cmp td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.cmp thead th{background:var(--lilac);font-weight:700}
+.cmp thead th:last-child{background:var(--purple);color:#fff}
+.cmp tbody th{font-weight:600}
+.cmp td:last-child{font-weight:700;color:var(--purple-d);background:#FAF7FF}
+.cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
+@media (max-width:640px){table.cmp{min-width:0;font-size:.93rem}.cmp th,.cmp td{padding:11px 10px}.cmp thead th:first-child{width:36%}}
+
+/* trust */
+.trust{background:var(--lilac)}
+.tlist{display:grid;gap:26px 40px;margin:30px 0 0;padding:0;list-style:none}
+@media (min-width:760px){.tlist{grid-template-columns:1fr 1fr}}
+@media (min-width:1080px){.tlist{grid-template-columns:repeat(3,1fr)}}
+.tlist li{display:grid;grid-template-columns:44px 1fr;gap:14px}
+.tlist svg{width:40px;height:40px;color:var(--purple)}
+.tlist b{display:block;font-size:1.1rem;margin-bottom:2px}
+.tlist span{color:var(--ink2)}
+
+/* price */
+.price .grid{display:grid;gap:36px;align-items:center}
+@media (min-width:880px){.price .grid{grid-template-columns:1fr 1fr}}
+.tag{position:relative;background:var(--yellow);border-radius:18px 18px 18px 18px;padding:34px 30px 28px 56px;max-width:460px;transform:rotate(1.5deg);box-shadow:0 22px 40px -28px rgba(27,21,48,.7)}
+.tag::before{content:"";position:absolute;left:22px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px #E5B22E}
+.tag .amt{font-family:var(--f-display);font-stretch:120%;font-weight:880;font-size:clamp(3.4rem,9vw,4.8rem);line-height:.95;letter-spacing:-.03em}
+.tag .per{font-weight:700;margin:6px 0 14px}
+.tag ul{margin:0;padding:0 0 0 20px}
+.tag li{margin:4px 0}
+.trial{display:inline-block;background:var(--ink);color:#fff;border-radius:99px;padding:6px 14px;font-weight:700;font-size:.92rem;margin-bottom:12px}
+
+/* pilot */
+.pilot{background:var(--ink);color:#fff}
+.pilot h2{color:#fff}.pilot p{color:#DDD8EC}
+.pilot .btn-p{background:var(--yellow);color:var(--ink)}.pilot .btn-p:hover{background:#FFD76A}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq details:first-of-type{border-top:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 0;font-weight:700;font-size:1.08rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:12px;height:12px;border-right:3px solid var(--purple);border-bottom:3px solid var(--purple);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:6px}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq details p{color:var(--ink2);margin:0 0 18px}
+.faq .list{max-width:820px;margin-top:22px}
+
+/* final */
+.final{background:var(--purple);color:#fff}
+.final h2{color:#fff;max-width:18ch}.final p{color:#EDE6FF}
+.final .btn-p{background:#fff;color:var(--purple)}.final .btn-p:hover{background:var(--lilac)}
+.final .btn-s{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}.final .btn-s:hover{background:rgba(255,255,255,.1)}
+footer{padding:28px 0 40px;font-size:.88rem;color:var(--ink2)}
+footer p{max-width:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-t="skip">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Pentra Tindahan">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#5B21B6"/><path d="M12 24h40l-5-11H17z" fill="#FFC83D"/><path d="M12 24c0 4 4 6 6.7 6s6.6-2 6.6-6c0 4 3.9 6 6.7 6s6.7-2 6.7-6c0 4 3.9 6 6.6 6S52 28 52 24" fill="#FFC83D"/><rect x="18" y="33" width="28" height="18" rx="3" fill="#fff"/><rect x="24" y="38" width="7" height="13" fill="#5B21B6"/></svg>
+      <span>Pentra Tindahan</span>
+    </a>
+    <div class="lang" role="group" aria-label="Language" data-ta="langGroup">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="tl" aria-pressed="false">Tagalog</button>
+    </div>
+    <a class="btn btn-p" href="#start" data-t="navDemo">Free demo</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1 data-t="h1">Know what your store really earns, every day.</h1>
+      <p class="lede" data-t="heroP">Pentra Tindahan keeps your sales, stock, utang, GCash and helpers in one app on your phone, and it works even without internet.</p>
+      <div class="btns">
+        <a class="btn btn-p" data-app data-t="ctaTrial" href="#">Start your free 14-day trial</a>
+        <a class="btn btn-s" href="#start" data-t="ctaDemo">Ask for a free demo</a>
+      </div>
+      <p class="note" data-t="heroNote">No card needed. Works on any phone with a browser.</p>
+    </div>
+
+    <div class="shelf-card" role="region" aria-labelledby="shelf-h">
+      <h2 id="shelf-h" data-t="shelfH">Try it: count the shelf</h2>
+      <p class="q" data-t="shelfQ">You had 100 cans of sardines and 20 more were delivered. How many are left on the shelf?</p>
+      <div class="shelf"><svg id="shelf-svg" viewBox="0 0 372 318" role="img" aria-label="A shelf of sardine cans" data-ta="shelfImg"></svg></div>
+      <div class="slider">
+        <label for="left"><span data-t="leftLbl">Left on the shelf</span> <output id="left-out" for="left">70 cans</output></label>
+        <input id="left" type="range" min="0" max="120" step="1" value="120">
+      </div>
+      <dl class="stats" aria-live="polite">
+        <div><dt data-t="stSold">Sold</dt><dd id="st-sold">50</dd></div>
+        <div><dt data-t="stSales">Sales</dt><dd id="st-sales">₱1,250.00</dd></div>
+        <div><dt data-t="stCost">Cost of goods</dt><dd id="st-cost">₱1,000.00</dd></div>
+        <div class="profit"><dt data-t="stProfit">Profit</dt><dd id="st-profit">₱250.00</dd></div>
+      </dl>
+      <p class="left-val" id="st-left"></p>
+      <p class="shelf-foot" data-t="shelfFoot">You count, Pentra does the math. Sales use today's price of ₱25.00 a can; each can cost you ₱20.00.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec utang" aria-labelledby="utang-h">
+  <div class="wrap">
+    <h2 id="utang-h" data-t="utH">Your utang notebook, with a limit that holds.</h2>
+    <p class="lede" data-t="utP">Every customer gets a running balance and a credit limit. When a sale would go over the limit, Pentra stops it, unless you allow it this once.</p>
+    <div class="grid">
+      <figure style="margin:0">
+        <div class="notebook" aria-hidden="true">
+          <h3>Listahan ng utang</h3>
+          <ul>
+            <li>Aling Rosa — kape, sardinas ₱62</li>
+            <li>Mang Jun — ₱150</li>
+            <li class="x">Ate Joy — ₱200</li>
+            <li>Aling Rosa — ₱45 ?</li>
+            <li>Aling Rosa — ₱120 (bukas daw)</li>
+            <li>Mang Jun — load ₱50</li>
+            <li class="sum">Aling Rosa kabuuan: ₱2?? </li>
+          </ul>
+        </div>
+        <figcaption class="cap" data-t="nbCap">Before: pages you can lose, totals you add by hand.</figcaption>
+      </figure>
+
+      <div>
+        <div class="acct" role="region" aria-labelledby="acct-h">
+          <div class="acct-top">
+            <h3 id="acct-h">Aling Rosa</h3>
+            <span class="pill" data-t="acctPill">Utang</span>
+          </div>
+          <div class="bal" id="u-bal">₱420.00</div>
+          <div class="meter" id="u-meter" role="img" aria-label=""><span id="u-fill" style="width:84%"></span></div>
+          <div class="limit-row"><span data-t="uBalLbl">Balance</span><span id="u-lim">Limit ₱500.00</span></div>
+          <table class="hist">
+            <caption class="vh" data-t="uHist">Recent entries</caption>
+            <tbody id="u-hist"></tbody>
+          </table>
+          <label class="chk"><input type="checkbox" id="u-allow"> <span data-t="uAllow">Allow going over the limit this time</span></label>
+          <div class="btns">
+            <button type="button" class="btn btn-p" id="u-add" data-t="uAdd">Add ₱50 utang</button>
+            <button type="button" class="btn btn-s" id="u-pay" data-t="uPay">Record ₱100 payment</button>
+          </div>
+          <p class="msg" id="u-msg" role="status" aria-live="polite"></p>
+        </div>
+        <p class="cap" data-t="acctCap">After: every peso and every date, one tap away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec ov" aria-labelledby="ov-h">
+  <div class="wrap">
+    <div class="grid">
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="scr-top"><b>Aling Nena Store</b><span class="pill" data-t="exStore">Example store</span></div>
+          <div class="tiles">
+            <div class="tile"><span data-t="phSales">Today's sales</span><b>₱4,820.00</b></div>
+            <div class="tile pos"><span data-t="phProfit">Today's profit</span><b>₱1,012.00</b></div>
+            <div class="tile"><span data-t="phCash">Cash on hand</span><b>₱6,350.00</b></div>
+            <div class="tile"><span data-t="phGcash">GCash float</span><b>₱3,200.00</b></div>
+          </div>
+          <div class="scr-h" data-t="phAttn">Needs attention</div>
+          <div class="alerts">
+            <div class="a-out"><span data-t="alOut">Out of stock</span><b>2</b></div>
+            <div class="a-low"><span data-t="alLow">Low stock</span><b>5</b></div>
+            <div class="a-exp"><span data-t="alExp">Expiring soon</span><b>3</b></div>
+            <div class="a-dead"><span data-t="alDead">Expired</span><b>1</b></div>
+          </div>
+          <div class="scr-h" data-t="phVal">Stock value</div>
+          <div class="val">
+            <div><span data-t="vCost">At cost</span><b>₱48,600.00</b></div>
+            <div><span data-t="vRetail">At selling price</span><b>₱61,250.00</b></div>
+            <div><span data-t="vPot">Profit still on the shelf</span><b>₱12,650.00</b></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 id="ov-h" data-t="ovH">Your whole store at a glance.</h2>
+        <p class="lede" data-t="ovP">Open Pentra and the Overview shows today's sales and profit, the money in your drawer and in GCash, and what needs attention on your shelves.</p>
+        <dl class="defs">
+          <div><dt><span class="dot" style="background:#E0473E" aria-hidden="true"></span><span data-t="dOutT">Out of stock</span></dt><dd data-t="dOut">Sold out. Reorder before customers go elsewhere.</dd></div>
+          <div><dt><span class="dot" style="background:#E7A614" aria-hidden="true"></span><span data-t="dLowT">Low stock</span></dt><dd data-t="dLow">At or below the minimum you set for each product.</dd></div>
+          <div><dt><span class="dot" style="background:#E9772C" aria-hidden="true"></span><span data-t="dExpT">Expiring soon</span></dt><dd data-t="dExp">Within 7, 14 or 30 days, you choose. Sell it or return it in time.</dd></div>
+          <div><dt><span class="dot" style="background:#6E6785" aria-hidden="true"></span><span data-t="dDeadT">Expired</span></dt><dd data-t="dDead">Pentra never sells expired stock, so you know what to pull out.</dd></div>
+          <div><dt><span class="dot" style="background:#177A52" aria-hidden="true"></span><span data-t="dValT">Stock value</span></dt><dd data-t="dVal">What your shelves cost you, what they sell for, and the profit still in them.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec feat" aria-labelledby="feat-h">
+  <div class="wrap">
+    <h2 id="feat-h" data-t="ftH">Everything your tindahan handles, in one app.</h2>
+    <div class="tabs" role="tablist" aria-labelledby="feat-h" id="tabs"></div>
+    <div id="panels"></div>
+  </div>
+</section>
+
+<section class="sec day" aria-labelledby="day-h">
+  <div class="wrap">
+    <h2 id="day-h" data-t="dayH">A day with Pentra.</h2>
+    <ol class="steps">
+      <li><div><b data-t="d1T">Opening</b><span data-t="d1">Check the bell for low stock, expiring goods and bills due.</span></div></li>
+      <li><div><b data-t="d2T">During the day</b><span data-t="d2">Ring up sales, utang, GCash and load as they happen.</span></div></li>
+      <li><div><b data-t="d3T">A delivery arrives</b><span data-t="d3">Record it by the case, with its cost, before it hits the shelf.</span></div></li>
+      <li><div><b data-t="d4T">Closing</b><span data-t="d4">Count the drawer. Pentra shows any difference.</span></div></li>
+      <li><div><b data-t="d5T">Weekly</b><span data-t="d5">Count your fast-moving shelves and follow up utang.</span></div></li>
+      <li><div><b data-t="d6T">Monthly</b><span data-t="d6">Read your report and download a backup.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec calc" aria-labelledby="calc-h">
+  <div class="wrap">
+    <h2 id="calc-h" data-t="cH">Where does your money go?</h2>
+    <p class="lede" data-t="cP">Move the sliders to match your store. This is money you can't see today. Pentra shows you where it goes, so you can act on it.</p>
+    <div class="grid">
+      <div>
+        <div class="field"><label for="c-exp"><span data-t="cExp">Expired or damaged goods each month</span><output id="o-exp" for="c-exp"></output></label><input id="c-exp" type="range" min="0" max="5000" step="50" value="800"></div>
+        <div class="field"><label for="c-ut"><span data-t="cUt">Utang you forget or can't collect each month</span><output id="o-ut" for="c-ut"></output></label><input id="c-ut" type="range" min="0" max="10000" step="50" value="1000"></div>
+        <div class="field"><label for="c-miss"><span data-t="cMiss">Stock that goes missing each month</span><output id="o-miss" for="c-miss"></output></label><input id="c-miss" type="range" min="0" max="5000" step="50" value="500"></div>
+        <div class="field"><label for="c-hrs"><span data-t="cHrs">Hours a week on the notebook and counting</span><output id="o-hrs" for="c-hrs"></output></label><input id="c-hrs" type="range" min="0" max="20" step="1" value="5"></div>
+      </div>
+      <div class="result" aria-live="polite">
+        <div class="big" id="r-month">₱2,300</div>
+        <p data-t="rMonth">a month you can't see today</p>
+        <div class="row"><span data-t="rYear">In a year</span><b id="r-year">₱27,600</b></div>
+        <div class="row"><span data-t="rHours">Time on paperwork</span><b id="r-hours"></b></div>
+        <p class="share" id="r-share"></p>
+        <p class="fine" data-t="rFine">Your numbers stay on this page. Nothing is sent anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cmpsec" aria-labelledby="cmp-h" style="padding-top:0">
+  <div class="wrap">
+    <h2 id="cmp-h" data-t="cmpH">Notebook or Pentra?</h2>
+    <div class="tblw" role="region" aria-labelledby="cmp-h" tabindex="0">
+      <table class="cmp">
+        <thead><tr><th scope="col"><span class="vh" data-t="cmpWhat">What you need</span></th><th scope="col" data-t="cmpNb">Notebook</th><th scope="col">Pentra</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" data-t="k1">Today's real profit</th><td data-t="n1">Hard to work out</td><td data-t="p1">On the Overview</td></tr>
+          <tr><th scope="row" data-t="k2">Utang totals and limits</th><td data-t="n2">Added by hand</td><td data-t="p2">Automatic, with limits</td></tr>
+          <tr><th scope="row" data-t="k3">Low and expiring stock</th><td data-t="n3">When you notice</td><td data-t="p3">Alerts</td></tr>
+          <tr><th scope="row" data-t="k4">Sales from a shelf count</th><td data-t="n4">No</td><td data-t="p4">Yes</td></tr>
+          <tr><th scope="row" data-t="k5">Your helpers' sales</th><td data-t="n5">Trust alone</td><td data-t="p5">Every sale shows who made it</td></tr>
+          <tr><th scope="row" data-t="k6">A lost notebook or phone</th><td data-t="n6">Records gone</td><td data-t="p6">Back on a new phone</td></tr>
+          <tr><th scope="row" data-t="k7">Cost</th><td data-t="n7">A notebook</td><td id="cmp-price">₱129 a month after the free trial</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec trust" aria-labelledby="trust-h">
+  <div class="wrap">
+    <h2 id="trust-h" data-t="trH">Built for how a tindahan really works.</h2>
+    <ul class="tlist">
+      <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16a20 20 0 0 1 28 0M11 21a13 13 0 0 1 18 0M16 26a6 6 0 0 1 8 0"/><path d="M6 6l28 28"/></svg><div><b data-t="t1T">Works offline</b><span data-t="t1">Brownout or no signal? Keep selling. Pentra catches up when you're back online.</span></div></li>
+      <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 30h17a7 7 0 0 0 1-14 10 10 0 0 0-19 2 6 6 0 0 0 1 12z"/><path d="M20 26v-9M16 21l4-4 4 4"/></svg><div><b data-t="t2T">Backed up</b><span data-t="t2">Saved on your phone first, then online. Download your own backup any time.</span></div></li>
+      <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="15" cy="14" r="5"/><path d="M5 32c1-6 5-9 10-9s9 3 10 9"/><path d="M27 18l3 3 6-7"/></svg><div><b data-t="t3T">Helpers with limits</b><span data-t="t3">They sell. You decide what else they can do.</span></div></li>
+      <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16l4-8h10l4 8M4 16h18v16H4zM22 20l3-6h8l3 6M22 20h14v12H22"/></svg><div><b data-t="t4T">More than one business</b><span data-t="t4">A store and a talyer? Keep their money apart, with one login.</span></div></li>
+      <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="17" width="22" height="16" rx="3"/><path d="M14 17v-4a6 6 0 0 1 12 0v4"/></svg><div><b data-t="t5T">Your records are yours</b><span data-t="t5">Other stores can't see them. Only you and the helpers you invite.</span></div></li>
+      <li><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="4" width="16" height="32" rx="4"/><path d="M18 30h4"/></svg><div><b data-t="t6T">Any phone</b><span data-t="t6">No app store needed. Open the link and add Pentra to your home screen.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec price" aria-labelledby="price-h">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h2 id="price-h" data-t="prH">Simple price. Free to start.</h2>
+        <p class="lede" data-t="prP">Try every feature free. Keep going only if Pentra helps your store.</p>
+        <div class="btns"><a class="btn btn-p" data-app data-t="ctaTrial2" href="#">Start your free trial</a></div>
+      </div>
+      <div class="tag">
+        <span class="trial" id="pr-trial">Free for the first 14 days</span>
+        <div class="amt" id="pr-amt">₱129</div>
+        <div class="per" data-t="prPer">a month · covers 2 businesses</div>
+        <div class="per yr" id="pr-year">or ₱1,199 a year, you save ₱349</div>
+        <ul>
+          <li data-t="pr1">Every feature included</li>
+          <li data-t="pr2">No limit on products or sales</li>
+          <li data-t="pr3">Up to 20 businesses</li>
+          <li data-t="pr4">Download your records any time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec pilot" aria-labelledby="pilot-h">
+  <div class="wrap">
+    <h2 id="pilot-h" data-t="piH">Be one of our first stores.</h2>
+    <p class="lede" data-t="piP">We're opening Pentra to a small group of stores first. You get help setting up and a direct line to us. We get your honest feedback.</p>
+    <div class="btns"><a class="btn btn-p" href="#start" data-t="piBtn">Join the first stores</a></div>
+  </div>
+</section>
+
+<section class="sec faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 id="faq-h" data-t="fqH">Questions store owners ask.</h2>
+    <div class="list" id="faq-list"></div>
+  </div>
+</section>
+
+<section class="sec final" id="start" aria-labelledby="final-h">
+  <div class="wrap">
+    <h2 id="final-h" data-t="fnH">Ready to see your store clearly?</h2>
+    <p class="lede" data-t="fnP">Start the free trial on your own, or ask for a free demo and we'll show you on your phone.</p>
+    <div class="btns" id="contact"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-t="foot1">© 2026 Pentra. GCash is a trademark of its owner. Pentra is not affiliated with GCash and does not connect to it; it keeps your own record of GCash transactions.</p>
+    <p data-t="foot2">Example figures on this page are for illustration. The calculator runs only on this page.</p>
+  </div>
+</footer>
+
+<script>
+/* ---- Change these for your business ---- */
+const CONFIG = {
+  appUrl: 'https://pentrascans.netlify.app/',   // where "Start your free trial" goes
+  email: 'pentrascans@gmail.com',           // shown as "Email us"; leave '' to hide
+  messenger: '',                            // e.g. 'https://m.me/yourpage'; leave '' to hide
+  phone: '',                                // e.g. '+639171234567'; leave '' to hide
+  trialDays: 14,
+  price: 129,                               // pesos a month (one plan covers 2 businesses)
+  yearly: 1199                              // pesos a year
+};
+
+const T = {
+en: {
+  skip:`Skip to content`, langGroup:`Language`, navDemo:`Free demo`,
+  h1:`Know what your store really earns, every day.`,
+  heroP:`Pentra Tindahan keeps your sales, stock, utang, GCash and helpers in one app on your phone, and it works even without internet.`,
+  ctaTrial:`Start your free {days}-day trial`, ctaDemo:`Ask for a free demo`, heroNote:`No card needed. Works on any phone with a browser.`,
+  shelfH:`Try it: count the shelf`, shelfQ:`You had 100 cans of sardines and 20 more were delivered. How many are left on the shelf?`, shelfImg:`A shelf of sardine cans`,
+  leftLbl:`Left on the shelf`, cans:`{n} cans`, can1:`1 can`, stSold:`Sold`, stSales:`Sales`, stCost:`Cost of goods`, stProfit:`Profit`,
+  leftVal:`Stock still on the shelf: {v} at cost.`,
+  shelfFoot:`You count, Pentra does the math. Sales use today's price of ₱25.00 a can; each can cost you ₱20.00.`,
+  utH:`Your utang notebook, with a limit that holds.`,
+  utP:`Every customer gets a running balance and a credit limit. When a sale would go over the limit, Pentra stops it, unless you allow it this once.`,
+  nbCap:`Before: pages you can lose, totals you add by hand.`, acctPill:`Utang`, uBalLbl:`Balance`, uLim:`Limit {v}`, uHist:`Recent entries`,
+  uAllow:`Allow going over the limit this time`, uAdd:`Add ₱50 utang`, uPay:`Record ₱100 payment`, acctCap:`After: every peso and every date, one tap away.`,
+  hUt:`Utang`, hPay:`Payment`, hItems1:`coffee, sardines`, hItems2:`rice, 2 kg`, hItems3:`load`, meter:`{b} of the {l} limit used`,
+  mAdd:`Added ₱50.00 utang. Balance {b} of the {l} limit.`,
+  mStop:`Stopped. This would make {b}, over the {l} limit. Tick "Allow going over the limit this time" to let it through once.`,
+  mAllowed:`Allowed once. Balance {b}, over the {l} limit.`,
+  mPay:`Payment of ₱100.00 recorded. Balance {b}.`, mPayBig:`Refused. ₱100.00 is more than the {b} Aling Rosa owes.`, mZero:`Aling Rosa owes nothing now.`,
+  exStore:`Example store`, phSales:`Today's sales`, phProfit:`Today's profit`, phCash:`Cash on hand`, phGcash:`GCash float`, phAttn:`Needs attention`,
+  alOut:`Out of stock`, alLow:`Low stock`, alExp:`Expiring soon`, alDead:`Expired`, phVal:`Stock value`, vCost:`At cost`, vRetail:`At selling price`, vPot:`Profit still on the shelf`,
+  ovH:`Your whole store at a glance.`,
+  ovP:`Open Pentra and the Overview shows today's sales and profit, the money in your drawer and in GCash, and what needs attention on your shelves.`,
+  dOutT:`Out of stock`, dOut:`Sold out. Reorder before customers go elsewhere.`, dLowT:`Low stock`, dLow:`At or below the minimum you set for each product.`,
+  dExpT:`Expiring soon`, dExp:`Within 7, 14 or 30 days, you choose. Sell it or return it in time.`, dDeadT:`Expired`, dDead:`Pentra never sells expired stock, so you know what to pull out.`,
+  dValT:`Stock value`, dVal:`What your shelves cost you, what they sell for, and the profit still in them.`,
+  ftH:`Everything your tindahan handles, in one app.`,
+  dayH:`A day with Pentra.`, d1T:`Opening`, d1:`Check the bell for low stock, expiring goods and bills due.`, d2T:`During the day`, d2:`Ring up sales, utang, GCash and load as they happen.`,
+  d3T:`A delivery arrives`, d3:`Record it by the case, with its cost, before it hits the shelf.`, d4T:`Closing`, d4:`Count the drawer. Pentra shows any difference.`,
+  d5T:`Weekly`, d5:`Count your fast-moving shelves and follow up utang.`, d6T:`Monthly`, d6:`Read your report and download a backup.`,
+  cH:`Where does your money go?`, cP:`Move the sliders to match your store. This is money you can't see today. Pentra shows you where it goes, so you can act on it.`,
+  cExp:`Expired or damaged goods each month`, cUt:`Utang you forget or can't collect each month`, cMiss:`Stock that goes missing each month`, cHrs:`Hours a week on the notebook and counting`,
+  hrs:`{n} hours`, hr1:`1 hour`, rMonth:`a month you can't see today`, rYear:`In a year`, rHours:`Time on paperwork`, rHoursV:`about {n} hours a month`,
+  rShare:`Pentra is {p} a month, about {s}% of that.`, rShareSmall:`Pentra is {p} a month, less than 1% of that.`, rShareBig:`Pentra is {p} a month.`,
+  rNone:`Nothing slipping away? Pentra still shows your real profit every day.`, rFine:`Your numbers stay on this page. Nothing is sent anywhere.`,
+  cmpH:`Notebook or Pentra?`, cmpWhat:`What you need`, cmpNb:`Notebook`,
+  k1:`Today's real profit`, n1:`Hard to work out`, p1:`On the Overview`, k2:`Utang totals and limits`, n2:`Added by hand`, p2:`Automatic, with limits`,
+  k3:`Low and expiring stock`, n3:`When you notice`, p3:`Alerts`, k4:`Sales from a shelf count`, n4:`No`, p4:`Yes`,
+  k5:`Your helpers' sales`, n5:`Trust alone`, p5:`Every sale shows who made it`, k6:`A lost notebook or phone`, n6:`Records gone`, p6:`Back on a new phone`,
+  k7:`Cost`, n7:`A notebook`, p7:`{p} a month after the free trial`,
+  trH:`Built for how a tindahan really works.`,
+  t1T:`Works offline`, t1:`Brownout or no signal? Keep selling. Pentra catches up when you're back online.`, t2T:`Backed up`, t2:`Saved on your phone first, then online. Download your own backup any time.`,
+  t3T:`Helpers with limits`, t3:`They sell. You decide what else they can do.`, t4T:`More than one business`, t4:`A store and a talyer? Keep their money apart, with one login.`,
+  t5T:`Your records are yours`, t5:`Other stores can't see them. Only you and the helpers you invite.`, t6T:`Any phone`, t6:`No app store needed. Open the link and add Pentra to your home screen.`,
+  prH:`Simple price. Free to start.`, prP:`Try every feature free. Keep going only if Pentra helps your store.`, ctaTrial2:`Start your free trial`,
+  prTrial:`Free for the first {days} days`, prYear:`or {y} a year, you save {v}`, prPer:`a month · covers 2 businesses`, pr1:`Every feature included`, pr2:`No limit on products or sales`, pr3:`Up to 20 businesses`, pr4:`Download your records any time`,
+  piH:`Be one of our first stores.`, piP:`We're opening Pentra to a small group of stores first. You get help setting up and a direct line to us. We get your honest feedback.`, piBtn:`Join the first stores`,
+  fqH:`Questions store owners ask.`,
+  fnH:`Ready to see your store clearly?`, fnP:`Start the free trial on your own, or ask for a free demo and we'll show you on your phone.`,
+  bTrial:`Start your free trial`, bEmail:`Email us for a demo`, bMsg:`Message us on Messenger`, bCall:`Call or text us`,
+  mailSubj:`Pentra Tindahan free demo`, mailBody:`Hi! I'd like a free demo of Pentra Tindahan for my store.\n\nStore name:\nLocation:\nBest time to visit:`,
+  foot1:`© 2026 Pentra. GCash is a trademark of its owner. Pentra is not affiliated with GCash and does not connect to it; it keeps your own record of GCash transactions.`,
+  foot2:`Example figures on this page are for illustration. The calculator runs only on this page.`
+},
+tl: {
+  skip:`Lumaktaw sa nilalaman`, langGroup:`Wika`, navDemo:`Libreng demo`,
+  h1:`Alamin ang totoong kita ng tindahan mo, araw-araw.`,
+  heroP:`Nasa iisang app sa cellphone mo ang benta, paninda, utang, GCash at mga tindera, at gumagana ito kahit walang internet.`,
+  ctaTrial:`Simulan ang libreng {days} araw`, ctaDemo:`Humingi ng libreng demo`, heroNote:`Walang card na kailangan. Gumagana sa kahit anong cellphone na may browser.`,
+  shelfH:`Subukan: bilangin ang estante`, shelfQ:`May 100 lata ka ng sardinas at may dumating pang 20. Ilan ang natira sa estante?`, shelfImg:`Estante ng mga lata ng sardinas`,
+  leftLbl:`Natira sa estante`, cans:`{n} lata`, can1:`1 lata`, stSold:`Nabenta`, stSales:`Benta`, stCost:`Puhunan`, stProfit:`Tubo`,
+  leftVal:`Halaga ng natira sa estante: {v} sa puhunan.`,
+  shelfFoot:`Ikaw ang bibilang, si Pentra ang magko-compute. Presyo ngayon: ₱25.00 bawat lata; ₱20.00 ang puhunan bawat isa.`,
+  utH:`Ang listahan ng utang, may limit na talagang sinusunod.`,
+  utP:`Bawat suki may sariling balanse at credit limit. Kapag lalampas na sa limit ang utang, pipigilan ito ni Pentra, maliban kung papayagan mo ngayong isang beses.`,
+  nbCap:`Dati: pahinang nawawala, kabuuang kinukuwenta nang mano-mano.`, acctPill:`Utang`, uBalLbl:`Balanse`, uLim:`Limit {v}`, uHist:`Mga huling tala`,
+  uAllow:`Payagang lumampas sa limit ngayong isang beses`, uAdd:`Magdagdag ng ₱50 na utang`, uPay:`Itala ang ₱100 na bayad`, acctCap:`Ngayon: bawat piso at bawat petsa, isang pindot lang.`,
+  hUt:`Utang`, hPay:`Bayad`, hItems1:`kape, sardinas`, hItems2:`bigas, 2 kilo`, hItems3:`load`, meter:`{b} sa {l} na limit ang nagamit`,
+  mAdd:`Nadagdag ang ₱50.00 na utang. Balanse: {b} sa {l} na limit.`,
+  mStop:`Pinigilan. Magiging {b} ito, lampas sa {l} na limit. I-tsek ang "Payagang lumampas sa limit ngayong isang beses" para payagan ngayon.`,
+  mAllowed:`Pinayagan ngayong isang beses. Balanse: {b}, lampas sa {l} na limit.`,
+  mPay:`Naitala ang ₱100.00 na bayad. Balanse: {b}.`, mPayBig:`Hindi tinanggap. Mas malaki ang ₱100.00 kaysa sa {b} na utang ni Aling Rosa.`, mZero:`Wala nang utang si Aling Rosa.`,
+  exStore:`Halimbawang tindahan`, phSales:`Benta ngayon`, phProfit:`Tubo ngayon`, phCash:`Pera sa kaha`, phGcash:`GCash float`, phAttn:`Kailangang asikasuhin`,
+  alOut:`Ubos na`, alLow:`Paubos na`, alExp:`Malapit mag-expire`, alDead:`Expired na`, phVal:`Halaga ng paninda`, vCost:`Sa puhunan`, vRetail:`Sa presyong benta`, vPot:`Tubong nasa estante pa`,
+  ovH:`Buong tindahan mo, sa isang tingin.`,
+  ovP:`Pagbukas mo ng Pentra, makikita agad sa Overview ang benta at tubo ngayong araw, ang pera sa kaha at sa GCash, at ang dapat asikasuhin sa estante.`,
+  dOutT:`Ubos na`, dOut:`Wala nang stock. Umorder bago lumipat ang suki sa iba.`, dLowT:`Paubos na`, dLow:`Nasa minimum na o mas mababa pa, ayon sa itinakda mo sa bawat produkto.`,
+  dExpT:`Malapit mag-expire`, dExp:`Sa loob ng 7, 14 o 30 araw, ikaw ang pipili. Ibenta o ibalik bago mahuli.`, dDeadT:`Expired na`, dDead:`Hindi kailanman ibebenta ni Pentra ang expired, kaya alam mo agad ang tatanggalin.`,
+  dValT:`Halaga ng paninda`, dVal:`Magkano ang puhunan sa estante, magkano kapag nabenta, at ang tubong nandoon pa.`,
+  ftH:`Lahat ng ginagawa sa tindahan, nasa iisang app.`,
+  dayH:`Isang araw kasama si Pentra.`, d1T:`Pagbukas`, d1:`Silipin ang alerto sa paubos, mag-e-expire at mga bayarin.`, d2T:`Buong araw`, d2:`Itala ang benta, utang, GCash at load habang nangyayari.`,
+  d3T:`May dumating na delivery`, d3:`Itala bawat kahon, kasama ang puhunan, bago ilagay sa estante.`, d4T:`Pagsasara`, d4:`Bilangin ang kaha. Ipapakita ni Pentra kung may diperensya.`,
+  d5T:`Lingguhan`, d5:`Bilangin ang mabilis mabentang paninda at habulin ang utang.`, d6T:`Buwanan`, d6:`Basahin ang ulat at mag-download ng backup.`,
+  cH:`Saan napupunta ang pera mo?`, cP:`I-adjust ayon sa tindahan mo. Ito ang perang hindi mo nakikita ngayon. Ipapakita ni Pentra kung saan ito napupunta para maaksyunan mo.`,
+  cExp:`Paninda na nag-e-expire o nasisira bawat buwan`, cUt:`Utang na nakakalimutan o hindi nasisingil bawat buwan`, cMiss:`Paninda na nawawala bawat buwan`, cHrs:`Oras bawat linggo sa listahan at pagbibilang`,
+  hrs:`{n} oras`, hr1:`1 oras`, rMonth:`bawat buwan na hindi mo nakikita ngayon`, rYear:`Sa isang taon`, rHours:`Oras sa listahan`, rHoursV:`mga {n} oras bawat buwan`,
+  rShare:`{p} lang bawat buwan si Pentra, mga {s}% niyan.`, rShareSmall:`{p} lang bawat buwan si Pentra, wala pang 1% niyan.`, rShareBig:`{p} bawat buwan si Pentra.`,
+  rNone:`Walang nawawala? Makikita mo pa rin ang totoong tubo araw-araw.`, rFine:`Dito lang sa page ang numero mo. Walang ipinapadala kahit saan.`,
+  cmpH:`Listahan o Pentra?`, cmpWhat:`Ang kailangan mo`, cmpNb:`Listahan`,
+  k1:`Totoong tubo ngayong araw`, n1:`Mahirap kuwentahin`, p1:`Nasa Overview`, k2:`Kabuuan at limit ng utang`, n2:`Mano-mano`, p2:`Awtomatiko, may limit`,
+  k3:`Paubos at mag-e-expire na paninda`, n3:`Kapag napansin mo`, p3:`May alerto`, k4:`Benta mula sa bilang ng estante`, n4:`Wala`, p4:`Meron`,
+  k5:`Benta ng mga tindera`, n5:`Tiwala lang`, p5:`May pangalan ang bawat benta`, k6:`Nawalang listahan o cellphone`, n6:`Wala na ang records`, p6:`Babalik sa bagong cellphone`,
+  k7:`Gastos`, n7:`Isang notebook`, p7:`{p} bawat buwan pagkatapos ng libreng trial`,
+  trH:`Ginawa para sa totoong takbo ng tindahan.`,
+  t1T:`Gumagana kahit offline`, t1:`Brownout o walang signal? Tuloy ang benta. Hahabol si Pentra pagbalik ng internet.`, t2T:`May backup`, t2:`Naka-save muna sa cellphone, saka online. Pwede kang mag-download ng sariling backup anumang oras.`,
+  t3T:`Tindera na may limit`, t3:`Sila ang magbebenta. Ikaw ang magpapasya kung ano pa ang pwede nila.`, t4T:`Higit sa isang negosyo`, t4:`May tindahan at talyer? Hiwalay ang pera nila, iisang login lang.`,
+  t5T:`Iyo ang records mo`, t5:`Hindi ito makikita ng ibang tindahan. Ikaw at ang mga in-invite mo lang.`, t6T:`Kahit anong cellphone`, t6:`Hindi na kailangan ng app store. Buksan ang link at idagdag ang Pentra sa home screen.`,
+  prH:`Simpleng presyo. Libreng simulan.`, prP:`Subukan nang libre ang lahat ng feature. Ituloy lang kung nakakatulong si Pentra sa tindahan mo.`, ctaTrial2:`Simulan ang libreng trial`,
+  prTrial:`Libre ang unang {days} araw`, prYear:`o {y} kada taon, tipid {v}`, prPer:`kada buwan · para sa 2 negosyo`, pr1:`Kasama ang lahat ng feature`, pr2:`Walang limit sa produkto at benta`, pr3:`Hanggang 20 negosyo`, pr4:`I-download ang records mo anumang oras`,
+  piH:`Maging isa sa mga unang tindahan.`, piP:`Uunahin namin ang ilang tindahan. Tutulungan ka naming mag-set up at diretso mo kaming makakausap. Kapalit nito ang tapat mong feedback.`, piBtn:`Sumali sa mga unang tindahan`,
+  fqH:`Mga tanong ng may-ari ng tindahan.`,
+  fnH:`Handa ka na bang makita nang malinaw ang tindahan mo?`, fnP:`Simulan ang libreng trial nang mag-isa, o humingi ng libreng demo at ipapakita namin sa cellphone mo.`,
+  bTrial:`Simulan ang libreng trial`, bEmail:`Mag-email para sa demo`, bMsg:`Mag-message sa Messenger`, bCall:`Tumawag o mag-text`,
+  mailSubj:`Libreng demo ng Pentra Tindahan`, mailBody:`Hi! Gusto ko ng libreng demo ng Pentra Tindahan para sa tindahan ko.\n\nPangalan ng tindahan:\nLokasyon:\nOras na pwede kayong pumunta:`,
+  foot1:`© 2026 Pentra. Ang GCash ay trademark ng may-ari nito. Hindi kaanib ng GCash si Pentra at hindi ito nakakonekta rito; sarili mong tala ng GCash transactions ang itinatago nito.`,
+  foot2:`Halimbawa lang ang mga numero sa page na ito. Dito lang sa page tumatakbo ang calculator.`
+}};
+
+const TABS = [
+  { id:'benta', icon:'<path d="M3 4h2l2 11h11l2-8H6"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/>',
+    en:{ tab:`Benta`, t:`Ring up a sale in seconds.`, p:[`Scan barcodes with your phone's camera, or tap and search.`, `Cash, GCash or utang, or split across them.`, `Sell a whole box at its own price.`, `Every void needs a reason, and the stock goes back.`]},
+    tl:{ tab:`Benta`, t:`Bentahan sa ilang segundo.`, p:[`I-scan ang barcode gamit ang camera ng cellphone, o i-tap at hanapin.`, `Cash, GCash o utang, pwede ring hati-hati.`, `Ibenta ang buong kahon sa sarili nitong presyo.`, `May dahilan ang bawat void, at bumabalik ang paninda.`]}},
+  { id:'paninda', icon:'<path d="M3 8l9-5 9 5v9l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v9"/>',
+    en:{ tab:`Paninda`, t:`Know your stock and your costs.`, p:[`Record deliveries by the case, with cost and expiry.`, `Price with markup or margin, rounded the way you like.`, `Earliest-expiring stock sells first; expired stock never does.`, `Every product's full history: who, when, how many.`]},
+    tl:{ tab:`Paninda`, t:`Alam mo ang paninda at puhunan.`, p:[`Itala ang delivery bawat kahon, kasama ang puhunan at expiry.`, `Presyo gamit ang markup o margin, naka-round ayon sa gusto mo.`, `Unang nabebenta ang malapit mag-expire; hindi kailanman ang expired.`, `Buong kasaysayan ng bawat produkto: sino, kailan, ilan.`]}},
+  { id:'count', icon:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v3h6V3M9 12l2 2 4-4"/>',
+    en:{ tab:`Stock count`, t:`No time to list every sale? Count instead.`, p:[`Type what's left; Pentra works out sales, cost and profit.`, `Cases and loose pieces, counted the way you stack them.`, `Mark damaged, expired or personal-use pieces so they aren't counted as sales.`, `Review before saving, and undo a mistyped count.`]},
+    tl:{ tab:`Bilang ng paninda`, t:`Walang oras ilista ang bawat benta? Bilangin na lang.`, p:[`I-type ang natira; si Pentra ang magko-compute ng benta, puhunan at tubo.`, `Kahon at tingi, binibilang kung paano mo nakaayos.`, `Markahan ang sira, expired o ginamit sa bahay para hindi mabilang na benta.`, `Tingnan muna bago i-save, at i-undo kung nagkamali ng bilang.`]}},
+  { id:'utang', icon:'<path d="M6 3h11a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 12h6"/>',
+    en:{ tab:`Utang`, t:`Utang with limits, not guesses.`, p:[`A running balance for every customer.`, `Credit limits that stop a sale unless you allow it.`, `Overdue after 30 days with no payment, with an alert.`, `A payment can't be more than what they owe.`]},
+    tl:{ tab:`Utang`, t:`Utang na may limit, hindi hula.`, p:[`Tuloy-tuloy na balanse ng bawat suki.`, `Credit limit na humihinto sa benta maliban kung papayagan mo.`, `Overdue kapag 30 araw nang walang bayad, may alerto.`, `Hindi pwedeng lumampas ang bayad sa utang.`]}},
+  { id:'gcash', icon:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>',
+    en:{ tab:`GCash and E-load`, t:`A float that matches your GCash app.`, p:[`Cash-in and cash-out with your fee and reference number.`, `Recount the float and see any difference.`, `Load sold by network, and load bought with its cost.`, `Pentra keeps the record; it doesn't connect to GCash.`]},
+    tl:{ tab:`GCash at E-load`, t:`Float na tugma sa GCash app mo.`, p:[`Cash-in at cash-out kasama ang fee at reference number.`, `Bilangin ulit ang float at makita ang diperensya.`, `Load na nabenta bawat network, at load na binili kasama ang puhunan.`, `Si Pentra ang may tala; hindi ito nakakonekta sa GCash.`]}},
+  { id:'helpers', icon:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-4 3.3-6 6.5-6s5.7 2 6.5 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2 .7 3.2 2.6 3.5 6"/>',
+    en:{ tab:`Helpers`, t:`Helpers with their own login.`, p:[`Cashier, Manager, or a role you design.`, `The server blocks what a role isn't allowed to record.`, `Every sale shows who made it.`, `Remove a helper and their access ends at once.`]},
+    tl:{ tab:`Tindera`, t:`May sariling login ang tindera.`, p:[`Cashier, Manager, o role na gawa mo.`, `Hinaharang ng server ang hindi pinapayagan sa role.`, `Makikita kung sino ang gumawa ng bawat benta.`, `Tanggalin ang tindera at tapos agad ang access niya.`]}},
+  { id:'reports', icon:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    en:{ tab:`Reports`, t:`Profit by day, week or month.`, p:[`Sales, profit, margin and cost of goods.`, `Top products and the profit each one makes.`, `How customers paid: cash, GCash or utang.`, `Export to Excel when you need it.`]},
+    tl:{ tab:`Ulat`, t:`Tubo bawat araw, linggo o buwan.`, p:[`Benta, tubo, margin at puhunan ng nabenta.`, `Pinakamabentang produkto at tubo ng bawat isa.`, `Paano nagbayad ang mga suki: cash, GCash o utang.`, `I-export sa Excel kapag kailangan.`]}},
+  { id:'backup', icon:'<path d="M7 18h10a5 5 0 0 0 .7-9.9A7 7 0 0 0 4.5 10 4 4 0 0 0 7 18z"/><path d="M12 15V9M9.5 11.5 12 9l2.5 2.5"/>',
+    en:{ tab:`Backup`, t:`Your records survive a lost phone.`, p:[`Works without internet, and syncs when you're back online, usually within about 20 seconds.`, `Sign in on a new phone and your store comes back.`, `Download a full backup file any time.`, `Run up to 20 businesses from one account.`]},
+    tl:{ tab:`Backup`, t:`Ligtas ang records kahit mawala ang cellphone.`, p:[`Gumagana kahit walang internet, at nagsi-sync pagbalik ng internet, karaniwang sa loob ng mga 20 segundo.`, `Mag-sign in sa bagong cellphone at babalik ang tindahan mo.`, `Mag-download ng buong backup file anumang oras.`, `Hanggang 20 negosyo sa iisang account.`]}}
+];
+
+const FAQ = [
+  { en:[`Do I need internet?`, `No. Pentra works offline and saves everything on your phone first. When you're online, it backs up and syncs your phones, usually within about 20 seconds while Pentra is open.`],
+    tl:[`Kailangan ba ng internet?`, `Hindi. Gumagana si Pentra kahit offline at naka-save muna ang lahat sa cellphone mo. Pagbalik ng internet, magba-backup ito at magsi-sync sa ibang cellphone, karaniwang sa loob ng mga 20 segundo habang bukas ang Pentra.`]},
+  { en:[`What phone do I need?`, `Any phone, tablet or computer with an up-to-date browser such as Chrome or Safari. Open the link and add Pentra to your home screen; no app store needed.`],
+    tl:[`Anong cellphone ang kailangan?`, `Kahit anong cellphone, tablet o computer na may updated na browser gaya ng Chrome o Safari. Buksan ang link at idagdag ang Pentra sa home screen; hindi na kailangan ng app store.`]},
+  { en:[`Do I have to type every sale?`, `No. Ring up the sales you want, like utang and GCash, and count the rest of your stock now and then. Pentra works out what was sold, at today's prices.`],
+    tl:[`Kailangan ko bang i-type ang bawat benta?`, `Hindi. I-type lang ang gusto mo, gaya ng utang at GCash, at bilangin paminsan-minsan ang natitirang paninda. Si Pentra ang magko-compute ng nabenta, gamit ang presyo ngayon.`]},
+  { en:[`Is my data safe?`, `Your records are saved on your phone and backed up online. Other stores can't see them; only you and the helpers you invite can. You can download a full backup file any time.`],
+    tl:[`Ligtas ba ang data ko?`, `Naka-save ang records mo sa cellphone at may backup online. Hindi ito makikita ng ibang tindahan; ikaw at ang mga in-invite mong tindera lang. Pwede kang mag-download ng buong backup anumang oras.`]},
+  { en:[`Can my helper use it?`, `Yes. Each helper gets their own login as a Cashier, a Manager or a role you design. The server blocks anything their role can't record, and every sale shows who made it.`],
+    tl:[`Pwede bang gamitin ng tindera ko?`, `Oo. May sariling login ang bawat tindera bilang Cashier, Manager o role na gawa mo. Hinaharang ng server ang hindi pinapayagan sa role nila, at makikita kung sino ang gumawa ng bawat benta.`]},
+  { en:[`Does it connect to my GCash?`, `No. Pentra keeps a record of your GCash cash-in, cash-out, fees and float so they match your GCash app. You still send and receive money in GCash itself.`],
+    tl:[`Nakakonekta ba ito sa GCash ko?`, `Hindi. Itinatala ni Pentra ang cash-in, cash-out, fee at float mo para tumugma sa GCash app mo. Sa GCash mo pa rin ipapadala at tatanggapin ang pera.`]},
+  { en:[`Can Pentra catch missing money or stock?`, `It makes it much easier to spot. Every sale has a name on it, and when you count the drawer or the shelf, Pentra shows the difference. It can't stop theft by itself.`],
+    tl:[`Makikita ba ni Pentra ang nawawalang pera o paninda?`, `Mas madali itong mapansin. May pangalan ang bawat benta, at kapag binilang mo ang kaha o estante, ipapakita ni Pentra ang diperensya. Hindi nito kayang pigilan mag-isa ang pagnanakaw.`]},
+  { en:[`How much does it cost?`, `Free for the first {days} days, then {p} per store per month, with every feature included.`],
+    tl:[`Magkano?`, `Libre ang unang {days} araw, pagkatapos {p} bawat tindahan bawat buwan, kasama ang lahat ng feature.`]},
+  { en:[`I have two stores. Is that one account?`, `Yes. Run up to 20 businesses from one login, each with its own stock, money and helpers, plus a combined view.`],
+    tl:[`Dalawa ang tindahan ko. Isang account lang ba?`, `Oo. Hanggang 20 negosyo sa iisang login, bawat isa may sariling paninda, pera at tindera, at may pinagsamang view.`]},
+  { en:[`What if I lose my phone?`, `Sign in on a new phone and your store comes back from the online backup.`],
+    tl:[`Paano kung mawala ang cellphone ko?`, `Mag-sign in lang sa bagong cellphone at babalik ang tindahan mo mula sa online backup.`]}
+];
+
+/* ---- helpers ---- */
+const $ = s => document.querySelector(s), $$ = s => Array.from(document.querySelectorAll(s));
+const money = (n, dec = 2) => '₱' + Number(n).toLocaleString('en-PH', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+const fill = (s, o) => s.replace(/\{(\w+)\}/g, (m, k) => (k in o ? o[k] : m));
+let lang = 'en';
+const t = (k, o) => fill(T[lang][k] != null ? T[lang][k] : T.en[k], Object.assign({ days: CONFIG.trialDays, p: money(CONFIG.price, 0) }, o || {}));
+
+/* ---- shelf ---- */
+const EXPECTED = 120, PRICE = 25, COST = 20, COLS = 12, ROWS = 10;
+const shelfSvg = $('#shelf-svg'), leftIn = $('#left');
+(function drawShelf(){
+  const NS = 'http://www.w3.org/2000/svg', w = 26, h = 23, gx = 30, gy = 31.5; let html = '';
+  for (let r = 0; r < ROWS; r++) {
+    const y = 6 + r * gy;
+    html += `<rect x="2" y="${y + h + 1}" width="368" height="4" rx="2" fill="#B9824B"/>`;
+    for (let c = 0; c < COLS; c++) {
+      const i = r * COLS + c, x = 7 + c * gx;
+      html += `<g class="can" data-i="${i}"><rect class="body" x="${x}" y="${y}" width="${w - 4}" height="${h}" rx="5" fill="#D2463E"/><rect class="band" x="${x}" y="${y + 8}" width="${w - 4}" height="7" fill="#FFC83D"/><rect class="lid" x="${x + 2}" y="${y + 2}" width="${w - 8}" height="2.5" rx="1.2" fill="#F08D86"/></g>`;
+    }
+  }
+  shelfSvg.innerHTML = html;
+})();
+const cans = $$('#shelf-svg .can');
+function shelf(left){
+  left = Math.max(0, Math.min(EXPECTED, Math.round(left)));
+  const sold = EXPECTED - left;
+  cans.forEach((c, i) => c.classList.toggle('gone', i >= left));
+  $('#left-out').textContent = left === 1 ? t('can1') : t('cans', { n: left });
+  $('#st-sold').textContent = sold;
+  $('#st-sales').textContent = money(sold * PRICE);
+  $('#st-cost').textContent = money(sold * COST);
+  $('#st-profit').textContent = money(sold * (PRICE - COST));
+  $('#st-left').textContent = t('leftVal', { v: money(left * COST) });
+}
+let anim = 0;
+leftIn.addEventListener('input', () => { cancelAnimationFrame(anim); anim = -1; shelf(+leftIn.value); });
+function intro(){
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { leftIn.value = 70; shelf(70); return; }
+  const from = 120, to = 70, dur = 1400; let t0 = null;
+  const step = ts => { if (anim === -1) return; if (t0 === null) t0 = ts; const k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3), v = Math.round(from + (to - from) * e);
+    leftIn.value = v; shelf(v); if (k < 1) anim = requestAnimationFrame(step); };
+  setTimeout(() => { if (anim !== -1) anim = requestAnimationFrame(step); }, 450);
+}
+
+/* ---- utang ---- */
+const LIMIT = 500; let bal = 420, lastMsg = null;
+const hist = [ { d:'Sep 22', k:'hUt', it:'hItems1', a:62 }, { d:'Sep 24', k:'hPay', a:-100 }, { d:'Sep 25', k:'hUt', it:'hItems2', a:120 }, { d:'Sep 26', k:'hUt', it:'hItems3', a:50 } ];
+function utang(){
+  $('#u-bal').textContent = money(bal);
+  $('#u-lim').textContent = t('uLim', { v: money(LIMIT) });
+  const pct = Math.min(100, bal / LIMIT * 100); $('#u-fill').style.width = pct + '%';
+  $('#u-meter').classList.toggle('over', bal > LIMIT);
+  $('#u-meter').setAttribute('aria-label', t('meter', { b: money(bal), l: money(LIMIT) }));
+  $('#u-hist').innerHTML = hist.slice(-4).reverse().map(h => `<tr><td>${h.d}</td><td>${t(h.k)}${h.it ? ': ' + t(h.it) : ''}</td><td>${h.a < 0 ? '−' + money(-h.a) : money(h.a)}</td></tr>`).join('');
+  const m = $('#u-msg');
+  if (!lastMsg) { m.textContent = ''; m.className = 'msg'; }
+  else { m.textContent = t(lastMsg.k, lastMsg.o); m.className = 'msg ' + (lastMsg.bad ? 'bad' : 'ok'); }
+}
+$('#u-add').addEventListener('click', () => {
+  const nb = bal + 50, allow = $('#u-allow').checked;
+  if (nb > LIMIT && !allow) { lastMsg = { k:'mStop', o:{ b: money(nb), l: money(LIMIT) }, bad:true }; return utang(); }
+  bal = nb; hist.push({ d:'Sep 28', k:'hUt', a:50 });
+  lastMsg = bal > LIMIT ? { k:'mAllowed', o:{ b: money(bal), l: money(LIMIT) } } : { k:'mAdd', o:{ b: money(bal), l: money(LIMIT) } };
+  $('#u-allow').checked = false; utang();
+});
+$('#u-pay').addEventListener('click', () => {
+  if (bal <= 0) { lastMsg = { k:'mZero', o:{} }; return utang(); }
+  if (100 > bal) { lastMsg = { k:'mPayBig', o:{ b: money(bal) }, bad:true }; return utang(); }
+  bal -= 100; hist.push({ d:'Sep 28', k:'hPay', a:-100 }); lastMsg = { k:'mPay', o:{ b: money(bal) } }; utang();
+});
+
+/* ---- features tabs ---- */
+let tabIdx = 0;
+function tabs(){
+  const tl = $('#tabs'), pn = $('#panels');
+  tl.innerHTML = TABS.map((x, i) => `<button type="button" role="tab" id="tab-${x.id}" aria-controls="panel-${x.id}" aria-selected="${i === tabIdx}" tabindex="${i === tabIdx ? 0 : -1}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${x.icon}</svg>${x[lang].tab}</button>`).join('');
+  pn.innerHTML = TABS.map((x, i) => `<div class="panel" role="tabpanel" id="panel-${x.id}" aria-labelledby="tab-${x.id}" tabindex="0"${i === tabIdx ? '' : ' hidden'}><h3>${x[lang].t}</h3><ul>${x[lang].p.map(p => `<li>${p}</li>`).join('')}</ul></div>`).join('');
+}
+function selectTab(i, focus){ tabIdx = (i + TABS.length) % TABS.length; tabs(); if (focus) $('#tabs').children[tabIdx].focus(); }
+$('#tabs').addEventListener('click', e => { const b = e.target.closest('[role=tab]'); if (b) selectTab([...b.parentNode.children].indexOf(b), true); });
+$('#tabs').addEventListener('keydown', e => {
+  const k = e.key; if (!['ArrowRight','ArrowLeft','Home','End'].includes(k)) return; e.preventDefault();
+  selectTab(k === 'Home' ? 0 : k === 'End' ? TABS.length - 1 : tabIdx + (k === 'ArrowRight' ? 1 : -1), true);
+});
+
+/* ---- calculator ---- */
+const calcIds = ['exp', 'ut', 'miss', 'hrs'];
+function calc(){
+  const v = Object.fromEntries(calcIds.map(k => [k, +$('#c-' + k).value]));
+  $('#o-exp').textContent = money(v.exp, 0); $('#o-ut').textContent = money(v.ut, 0); $('#o-miss').textContent = money(v.miss, 0);
+  $('#o-hrs').textContent = v.hrs === 1 ? t('hr1') : t('hrs', { n: v.hrs });
+  const month = v.exp + v.ut + v.miss, hoursM = Math.round(v.hrs * 52 / 12);
+  $('#r-month').textContent = money(month, 0);
+  $('#r-year').textContent = money(month * 12, 0);
+  $('#r-hours').textContent = t('rHoursV', { n: hoursM });
+  const share = month > 0 ? CONFIG.price / month * 100 : 0;
+  $('#r-share').textContent = month <= 0 ? t('rNone') : share < 1 ? t('rShareSmall') : share > 100 ? t('rShareBig') : t('rShare', { s: Math.round(share) });
+}
+calcIds.forEach(k => $('#c-' + k).addEventListener('input', calc));
+
+/* ---- faq + contact ---- */
+function faq(){
+  $('#faq-list').innerHTML = FAQ.map(f => `<details><summary>${f[lang][0]}</summary><p>${fill(f[lang][1], { days: CONFIG.trialDays, p: money(CONFIG.price, 0) })}</p></details>`).join('');
+}
+function contact(){
+  const b = [`<a class="btn btn-p" href="${CONFIG.appUrl}" rel="noopener">${t('bTrial')}</a>`];
+  if (CONFIG.email) b.push(`<a class="btn btn-s" href="mailto:${CONFIG.email}?subject=${encodeURIComponent(t('mailSubj'))}&body=${encodeURIComponent(t('mailBody'))}">${t('bEmail')}</a>`);
+  if (CONFIG.messenger) b.push(`<a class="btn btn-s" href="${CONFIG.messenger}" rel="noopener">${t('bMsg')}</a>`);
+  if (CONFIG.phone) b.push(`<a class="btn btn-s" href="tel:${CONFIG.phone.replace(/[^+\d]/g, '')}">${t('bCall')}</a>`);
+  $('#contact').innerHTML = b.join('');
+}
+
+/* ---- language ---- */
+function apply(l){
+  lang = T[l] ? l : 'en';
+  document.documentElement.lang = lang === 'tl' ? 'fil' : 'en';
+  $$('[data-t]').forEach(el => { el.textContent = t(el.dataset.t); });
+  $$('[data-ta]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.ta)); });
+  $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  $('#pr-trial').textContent = t('prTrial'); $('#pr-amt').textContent = money(CONFIG.price, 0); if ($('#pr-year')) $('#pr-year').textContent = t('prYear', { y: money(CONFIG.yearly, 0), v: money(CONFIG.price * 12 - CONFIG.yearly, 0) }); $('#cmp-price').textContent = t('p7');
+  $$('[data-app]').forEach(a => { a.href = CONFIG.appUrl; a.rel = 'noopener'; });
+  shelf(+leftIn.value); utang(); tabs(); calc(); faq(); contact();
+  try { localStorage.setItem('pentra-site-lang', lang); } catch (e) {}
+}
+$$('.lang button').forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+let start = 'en';
+try { start = localStorage.getItem('pentra-site-lang') || ((navigator.language || '').toLowerCase().startsWith('fil') || (navigator.language || '').toLowerCase().startsWith('tl') ? 'tl' : 'en'); } catch (e) {}
+apply(start);
+intro();
+</script>
+</body>
+</html>
